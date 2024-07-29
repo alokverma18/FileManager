@@ -1,11 +1,14 @@
-<mat-nav-list>
-  @for (folder of folders; track folder.name)  {
-    <mat-list-item 
-      (dblclick)="navigateTo(folder)">
-      <mat-icon>folder</mat-icon>
-      <span>{{ folder.name }}</span>
-    </mat-list-item>
-  }
-</mat-nav-list>
+<mat-icon class="toggle-icon" (click)="toggleSidebar()">menu</mat-icon>
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <mat-nav-list>
+    @for (folder of folders; track folder.name)  {
+      <mat-list-item 
+        (dblclick)="navigateTo(folder)">
+        <mat-icon>folder</mat-icon>
+        <span>{{ folder.name }}</span>
+      </mat-list-item>
+    }
+  </mat-nav-list>
+</div>
   
   

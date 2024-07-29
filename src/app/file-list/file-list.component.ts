@@ -15,10 +15,10 @@ import { FileElement } from '../element';
   templateUrl: './file-list.component.html',
   styleUrl: './file-list.component.css',
 })
-export class FileListComponent implements OnChanges {
-  currentPath: string = '';
+export class FileListComponent implements OnInit {
+  currentPath!: string;
 
-  pathParts: string[] = this.currentPath.split('\\');
+  pathParts!: string[];
 
   items: FileElement[] = [];
   allItems: FileElement[] = [];
@@ -27,14 +27,15 @@ export class FileListComponent implements OnChanges {
 
   ngOnInit() {
     this.fileManagerService.currentPath$.subscribe(path => {
-      this.currentPath = path;
+      console.log('List: Path observed:', path);
+      if (this.currentPath !== path) {
+        console.log('List: Updating currentPath and loading contents.');
+        this.currentPath = path;
+        this.loadFolderContents(path);
+      }
     });
-    this.loadFolderContents(this.currentPath);
   }
 
-  ngOnChanges() {
-
-  }
 
   loadFolderContents(path: string) {
     this.fileManagerService.setPath(path);

@@ -11,12 +11,14 @@ export class FileManagerService {
   private currentPath = new BehaviorSubject<string>('');
   currentPath$ = this.currentPath.asObservable();
 
+  constructor(private http: HttpClient) {}
+
   setPath(path: string) {
-    this.currentPath.next(path);
+    if (this.currentPath.value !== path) {
+      this.currentPath.next(path);
+    }
     console.log('Path set to: ' + path);
   }
-
-  constructor(private http: HttpClient) { }
 
   getFolderContents(path: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/list`, { params: { path } });

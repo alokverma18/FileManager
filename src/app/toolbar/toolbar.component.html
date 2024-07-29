@@ -1,7 +1,9 @@
 <mat-toolbar color="primary" class="toolbar">
     <span class="toolbar-title">File Manager</span>
     <span class="toolbar-spacer"></span>
-    <button mat-button (click)="goBack()">Back</button>
+    @if (currentPath !== '') {
+        <button mat-button (click)="goBack()">Back</button>
+    }
     <button mat-button (click)="createFolder()">New folder</button>
     <input type="file" (change)="onFileSelected($event)" style="display: none" #fileInput>
     <button mat-button (click)="fileInput.click()">Upload</button>

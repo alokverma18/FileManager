@@ -1,0 +1,22 @@
+.sidebar {
+    width: 250px; /* Fixed width */
+    transition: width 0.3s;
+    overflow: hidden;
+    white-space: nowrap; /* Prevent text wrapping */
+  }
+  
+  .sidebar.collapsed {
+    width: 0px; /* Width when collapsed */
+  }
+  
+  .toggle-icon {
+    cursor: pointer;
+    margin: 10px;
+    font-size: 24px;
+    transition: transform 0.3s;
+  }
+
+  .sidebar .mat-icon {
+    margin-right: 8px;
+    color: orangered;
+  }

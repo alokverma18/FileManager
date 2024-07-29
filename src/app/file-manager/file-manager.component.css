@@ -4,9 +4,6 @@
   flex-grow: 1; /* Ensure it takes up available space */
 }
 
-app-sidebar {
-  flex: 0 0 200px; /* Fixed width for sidebar */
-}
 
 app-file-list {
   flex: 1; /* Take up remaining space */

@@ -10,30 +10,32 @@ import { FileElement } from '../element';
   imports: [MatListModule, MatIconModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
-  providers: [FileManagerService]
 })
 export class SidebarComponent implements OnInit {
-  @Output() folderSelected = new EventEmitter<string>();
   folders: FileElement[] = [];
-  currentPath: string = '';
+  currentPath!: string;
+  isCollapsed: Boolean = false;
 
   constructor(private fileManagerService: FileManagerService) {}
 
   ngOnInit() {
     this.fileManagerService.currentPath$.subscribe(path => {
-      this.currentPath = path;
+      console.log('Sidebar: Path observed:', path);
+      if (this.currentPath !== path) {
+        console.log('Sidebar: Updating currentPath and loading contents.');
+        this.loadFolderContents(path);
+      }
     });
-    this.loadFolderContents(this.currentPath);
   }
 
   loadFolderContents(path: string) {
-    this.fileManagerService.setPath(path);
     this.fileManagerService.getFolderContents(path).subscribe(
       data => {
         this.folders = data
       },
       error => console.error(error)
     );
+    this.fileManagerService.setPath(path);
   }
 
   
@@ -44,5 +46,10 @@ export class SidebarComponent implements OnInit {
     } else {
       console.log('File clicked');
     }
+  }
+
+
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
   }
 }

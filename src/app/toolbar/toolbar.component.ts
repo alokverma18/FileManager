@@ -9,26 +9,31 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [MatToolbarModule, HttpClientModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
-  providers: [FileManagerService]
 })
 export class ToolbarComponent {
 
   constructor(private http: HttpClient, private fileManagerService: FileManagerService) {}
 
-  @Input() currentPath: string = '';
-  @Output() pathChanged = new EventEmitter<string>();
+  currentPath!: string;
+
+  ngOnInit() {
+    this.fileManagerService.currentPath$.subscribe(path => {
+      if (this.currentPath !== path) {
+        this.currentPath = path;
+        console.log('ToolBar: Updating currentPath and loading contents.');
+      }
+    });
+  }
 
   file: File | null = null;
 
   goBack() {
-    console.log("Hello" + this.currentPath);
-    if (this.currentPath) {
-      console.log(this.currentPath);
-      const pathParts = this.currentPath.split('/');
-      pathParts.pop(); // Remove the last part of the path
-      const newPath = pathParts.join('/');
-      this.pathChanged.emit(newPath);
-    }
+    console.log("Hello : " + this.currentPath);
+    const pathParts = this.currentPath.split('\\');
+    console.log(pathParts);
+    pathParts.pop();
+    this.fileManagerService.setPath(pathParts.join('/'));
+
   }
   
   createFolder() {
@@ -69,9 +74,6 @@ export class ToolbarComponent {
 
 
   refresh() {
-    this.fileManagerService.getFolderContents(this.currentPath).subscribe(
-      data => this.pathChanged.emit(this.currentPath),
-      error => console.error
-    );
+
   }
 }
