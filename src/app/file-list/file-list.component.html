@@ -1,0 +1,24 @@
+<div class="file-list-header">
+  <span>
+    
+  <a (click)="navigateToPath(-1)" class="clickable">Home > </a>
+    
+    <ng-container *ngFor="let part of currentPath.split('\\'); let i = index">
+      <a (click)="navigateToPath(i)" class="clickable">{{ part }} > </a>
+    </ng-container>
+  </span>
+
+  <mat-form-field>
+    <mat-label>Search Files</mat-label>
+    <input matInput placeholder="Search" (input)="search($event)" (change)="search($event)">
+  </mat-form-field>
+</div>
+<div class="file-grid">
+  <div 
+    class="file-item" 
+    *ngFor="let item of items" 
+    (dblclick)="navigateTo(item)">
+    <mat-icon>{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
+    <span>{{ item.name }}</span>
+  </div>
+</div>

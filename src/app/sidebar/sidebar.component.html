@@ -1,0 +1,11 @@
+<mat-nav-list>
+  @for (folder of folders; track folder.name)  {
+    <mat-list-item 
+      (dblclick)="navigateTo(folder)">
+      <mat-icon>folder</mat-icon>
+      <span>{{ folder.name }}</span>
+    </mat-list-item>
+  }
+</mat-nav-list>
+  
+  
