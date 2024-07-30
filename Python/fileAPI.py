@@ -4,7 +4,7 @@ import os
 import shutil
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
 
 # Base path for the NAS drive
 NAS_BASE_PATH = r'C:\Users\Alok\Desktop\\'
@@ -29,7 +29,6 @@ def list_files():
                 items.append({"name": item, "type": "folder", "path": item_path.replace(NAS_BASE_PATH, ''), "parent": parent(item_path)})
             else:
                 items.append({"name": item, "type": "file", "path": item_path.replace(NAS_BASE_PATH, ''), "parent": parent(item_path)})
-        print(items)
         return jsonify(items), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -89,6 +88,35 @@ def move_file():
     try:
         shutil.move(source, destination)
         return jsonify({"message": "File moved"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/delete', methods=['POST'])
+def delete_file():
+    file_path = os.path.join(NAS_BASE_PATH, request.json['path'])
+    try:
+        if os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+        else:
+            os.remove(file_path)
+        return jsonify({"message": "File/Folder deleted"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# Rename a file or folder
+@app.route('/rename', methods=['POST'])
+def rename_file():
+    old_path = os.path.join(NAS_BASE_PATH, request.json['path'])
+    new_name = request.json['newName']
+    old_extension = os.path.splitext(old_path)[1] if os.path.isfile(old_path) else ''
+    new_path = os.path.join(parent(old_path), new_name + old_extension)
+    
+    print(old_path)
+    print(new_path)
+    
+    try:
+        os.rename(old_path, new_path)
+        return jsonify({"message": "File/Folder renamed"}), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 

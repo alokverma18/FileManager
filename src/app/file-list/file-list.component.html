@@ -13,12 +13,32 @@
     <input matInput placeholder="Search" (input)="search($event)" (change)="search($event)">
   </mat-form-field>
 </div>
-<div class="file-grid">
+
+<div class="file-grid" (mouseup)="onRightClick($event)" >
   <div 
     class="file-item" 
     *ngFor="let item of items" 
-    (dblclick)="navigateTo(item)">
+    (dblclick)="navigateTo(item)"
+    (mouseup)="RightClickElement($event, item)"
+    >
     <mat-icon>{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
     <span>{{ item.name }}</span>
   </div>
+</div>
+
+
+<div id="contextmenu" class="contextmenu" [ngStyle]="menuStyle" (clickOutside)="closeMenu()" (mouseleave)="closeMenu()">
+  <ul class="menu">
+    <li (click)="viewItem()">Open</li>
+    <li (click)="renameItem()">Rename</li>
+    <li (click)="copyItem()" >Copy</li>
+    <li (click)="deleteItem()">Delete</li>
+    <li (click)="downloadItem()">Download</li>
+  </ul>
+</div>
+
+<div id="pasteContextMenu" class="contextmenu" [ngStyle]="pasteMenuStyle" (clickOutside)="closePasteMenu()" (mouseleave)="closePasteMenu()">
+  <ul class="menu">
+    <li (click)="pasteItem()">Paste</li>
+  </ul>
 </div>

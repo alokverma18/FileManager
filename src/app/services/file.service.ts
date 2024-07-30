@@ -46,4 +46,13 @@ export class FileManagerService {
   moveFile(source: string, destination: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/move`, { source, destination });
   }
+
+  deleteFile(path: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/delete`, { path });
+  }
+
+  renameFile(path: string, newName: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/rename`, { path, newName });
+  }
+
 }

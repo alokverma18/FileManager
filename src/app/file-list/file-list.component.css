@@ -54,7 +54,40 @@
     color: #007bff;
     text-decoration: none;
   }
-  
   .clickable:hover {
-    color:#1500ff
+    color: #1500ff;
+  }
+  
+  .contextmenu {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: none;
+    width: 200px; /* Increase width */
+    border-radius: 8px; /* Add rounded corners */
+  }
+  
+  .contextmenu.show {
+    display: block;
+  }
+  
+  .contextmenu .menu {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .contextmenu .menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contextmenu .menu li:hover {
+    background-color: #f0f0f0;
   }
