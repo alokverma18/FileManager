@@ -3,7 +3,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    background-color: #3f51b5; /* Example primary color */
+    background-color: #3f51b5;
     color: white;
 }
 
@@ -17,16 +17,17 @@
 }
 
 button {
-    margin-left: 8px;
     color: white;
     border: none;
     background: transparent;
     font-size: 14px;
     padding: 8px 16px;
     border-radius: 4px;
-    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: white;
+    transition: background-color 0.3s;
+    color: blue;
+    cursor: pointer;
 }

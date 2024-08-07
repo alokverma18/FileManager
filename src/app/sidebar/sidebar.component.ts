@@ -14,7 +14,7 @@ import { FileElement } from '../element';
 export class SidebarComponent implements OnInit {
   folders: FileElement[] = [];
   currentPath!: string;
-  isCollapsed: Boolean = false;
+  isCollapsed: Boolean = true;
 
   constructor(private fileManagerService: FileManagerService) {}
 

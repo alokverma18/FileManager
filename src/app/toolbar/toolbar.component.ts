@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FileManagerService } from '../services/file.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-toolbar',
@@ -12,7 +13,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class ToolbarComponent {
 
-  constructor(private http: HttpClient, private fileManagerService: FileManagerService) {}
+  constructor(
+              private http: HttpClient, 
+              private fileManagerService: FileManagerService,
+              private snackBar: MatSnackBar
+            ) {}
 
   currentPath!: string;
 
@@ -20,7 +25,6 @@ export class ToolbarComponent {
     this.fileManagerService.currentPath$.subscribe(path => {
       if (this.currentPath !== path) {
         this.currentPath = path;
-        console.log('ToolBar: Updating currentPath and loading contents.');
       }
     });
   }
@@ -32,14 +36,22 @@ export class ToolbarComponent {
     const pathParts = this.currentPath.split('\\');
     console.log(pathParts);
     pathParts.pop();
-    this.fileManagerService.setPath(pathParts.join('/'));
+    this.fileManagerService.setPath(pathParts.join('\\'));
 
   }
   
   createFolder() {
     const folder = prompt('Enter folder name');
-    this.fileManagerService.createFolder(this.currentPath + folder).subscribe(
-      data => this.refresh(),
+    if (!folder) {
+      return;
+    }
+    this.fileManagerService.createFolder(this.currentPath + "\\" + folder).subscribe(
+      data => {
+          this.snackBar.open('Folder created', 'Okay!', {
+            verticalPosition: 'top',
+            duration: 2000,
+          });
+        },
       error => console.error
     );
   }

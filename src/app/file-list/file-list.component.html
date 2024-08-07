@@ -1,27 +1,31 @@
 <div class="file-list-header">
   <span>
-    
-  <a (click)="navigateToPath(-1)" class="clickable">Home > </a>
-    
+    <a (click)="navigateToPath(-1)" class="clickable">Home > </a>
     <ng-container *ngFor="let part of currentPath.split('\\'); let i = index">
       <a (click)="navigateToPath(i)" class="clickable">{{ part }} > </a>
     </ng-container>
   </span>
 
-  <mat-form-field>
-    <mat-label>Search Files</mat-label>
-    <input matInput placeholder="Search" (input)="search($event)" (change)="search($event)">
-  </mat-form-field>
+  <span>
+    <input type="text" placeholder="Search" class="search" (input)="search($event)" >
+    <button class="btn" (click)="pasteItem()" >Paste</button>
+    <button #a class="btn" [cdkMenuTriggerFor]="menu">Sort</button>
+    <ng-template #menu >
+      <div class="menu" cdkMenu (mouseleave)="a.click()">
+        <button class="menu-item" cdkMenuItem (click)="sortByName()" >Name</button>
+        <button class="menu-item" cdkMenuItem (click)="sortBySize()" >Size</button>
+        <button class="menu-item" cdkMenuItem (click)="sortByDateCreated()" >Date Created</button>
+        <button class="menu-item" cdkMenuItem (click)="sortByDateModified()" >Date Modified</button>
+      </div>
+    </ng-template>
+  </span>
+
 </div>
 
-<div class="file-grid" (mouseup)="onRightClick($event)" >
-  <div 
-    class="file-item" 
-    *ngFor="let item of items" 
-    (dblclick)="navigateTo(item)"
-    (mouseup)="RightClickElement($event, item)"
-    >
-    <mat-icon>{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
+<div class="file-grid" (mouseup)="RightClickElement($event)">
+  <div class="file-item" *ngFor="let item of items" (dblclick)="navigateTo(item)"
+    (mouseup)="RightClickElement($event, item)">
+    <mat-icon [class]="item.type" >{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
     <span>{{ item.name }}</span>
   </div>
 </div>
@@ -31,14 +35,15 @@
   <ul class="menu">
     <li (click)="viewItem()">Open</li>
     <li (click)="renameItem()">Rename</li>
-    <li (click)="copyItem()" >Copy</li>
+    <li (click)="copyItem()">Copy</li>
+    <li (click)="cutItem()">Cut</li>
     <li (click)="deleteItem()">Delete</li>
     <li (click)="downloadItem()">Download</li>
   </ul>
 </div>
 
-<div id="pasteContextMenu" class="contextmenu" [ngStyle]="pasteMenuStyle" (clickOutside)="closePasteMenu()" (mouseleave)="closePasteMenu()">
+<!-- <div id="pasteContextMenu" class="contextmenu" [ngStyle]="pasteMenuStyle" (clickOutside)="closePasteMenu()" (mouseleave)="closePasteMenu()">
   <ul class="menu">
     <li (click)="pasteItem()">Paste</li>
   </ul>
-</div>
+</div> -->
