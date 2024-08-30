@@ -1,9 +1,7 @@
 # FileManager
+An application that allows users to navigate, view, and manage local files and directories efficiently.
 
-- **Project Description**: 
-  - A file manager application that allows users to navigate, view, and manage files and directories. It includes features such as opening, renaming, copying, deleting, and downloading files.
-
-- **Tech Stack**:
+## Tech Stack:
   - **Frontend**:
     - **Angular**: Frontend framework for building the user interface.
     - **TypeScript**: Programming language used for writing the Angular application.
@@ -17,49 +15,33 @@
   - **HTTP Client**:
     - **HttpClientModule**: Angular module for making HTTP requests to interact with backend services.
 
-### Project Description
-- **Job Consolidated Tool** is a web application that manages job data, allowing for the creation, updating, and deletion of job records. It interfaces with a SQL Server database and provides a user-friendly frontend for data visualization and interaction.
+## Features
+  - Search
+  - Sort
+  - Copy
+  - Cut
+  - Delete
+  - Rename
+  - Download
 
-### Tech Stack
-- **Backend**:
-  - **Python**: Used for server-side logic and data manipulation.
-  - **pyodbc**: Python library for connecting to the SQL Server database.
-  - **Flask**: A micro web framework used to create RESTful API endpoints for data operations.
-
-- **Database**:
-  - **SQL Server**: A relational database system used for storing and managing job data.
-
-- **Frontend**:
-  - **Angular**: A TypeScript-based web application framework for building the user interface.
-  - **ag-Grid**: A powerful data grid component for displaying and manipulating tabular data within the Angular frontend.
-
-- **Other**:
-  - **APIs**: RESTful APIs for CRUD (Create, Read, Update, Delete) operations on job data.
+## Snap
+  ![](Snapshot.png)
 
 
+## Contributions 🤝
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+All contributions are welcome and appreciated! If you find any issues (there are many btw), have suggestions, or want to add new features, you are welcome to create a PR.
+Thank you in advance for contributing to this project! 🚀
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Connect 
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://alokverma18.github.io/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alokverma18/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ak_verma18)
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 
+### Leave a 🌟 if it was Helpful!!
+### Thanks!
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
