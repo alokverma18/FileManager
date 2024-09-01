@@ -25,7 +25,7 @@ An application that allows users to navigate, view, and manage local files and d
   - Download
 
 ## Snap
-  ![](Snapshot.png)
+  ![](snapshot.png)
 
 
 ## Contributions 🤝
