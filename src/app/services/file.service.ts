@@ -6,7 +6,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class FileManagerService {
-  private apiUrl = 'http://127.0.0.1:5000/';
+  private apiUrl = 'https://filemanager-rgy7.onrender.com';
 
   private currentPath = new BehaviorSubject<string>('');
   currentPath$ = this.currentPath.asObservable();
