@@ -1,9 +1,7 @@
 # FileManager
+An application that allows users to navigate, view, and manage local files and directories efficiently.
 
-- **Project Description**: 
-  - A file manager application that allows users to navigate, view, and manage files and directories. It includes features such as searching, opening, renaming, copying, deleting, sorting and downloading files & folders.
-
-- **Tech Stack**:
+## Tech Stack:
   - **Frontend**:
     - **Angular**: Frontend framework for building the user interface.
     - **TypeScript**: Programming language used for writing the Angular application.
@@ -17,28 +15,33 @@
   - **HTTP Client**:
     - **HttpClientModule**: Angular module for making HTTP requests to interact with backend services.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
+## Features
+  - Search
+  - Sort
+  - Copy
+  - Cut
+  - Delete
+  - Rename
+  - Download
 
-## Development server
+## Snap
+  ![](snapshot.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Contributions 🤝
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+All contributions are welcome and appreciated! If you find any issues (there are many btw), have suggestions, or want to add new features, you are welcome to create a PR.
+Thank you in advance for contributing to this project! 🚀
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Connect 
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://alokverma18.github.io/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alokverma18/)
+[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/ak_verma18)
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 
+### Leave a 🌟 if it was Helpful!!
+### Thanks!
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
