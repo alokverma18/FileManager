@@ -1,7 +1,7 @@
 # FileManager
 
 - **Project Description**: 
-  - A file manager application that allows users to navigate, view, and manage files and directories. It includes features such as opening, renaming, copying, deleting, and downloading files.
+  - A file manager application that allows users to navigate, view, and manage files and directories. It includes features such as searching, opening, renaming, copying, deleting, sorting and downloading files & folders.
 
 - **Tech Stack**:
   - **Frontend**:
@@ -16,27 +16,6 @@
     - **os Module**: Python module for interacting with the file system to perform file operations.
   - **HTTP Client**:
     - **HttpClientModule**: Angular module for making HTTP requests to interact with backend services.
-
-### Project Description
-- **Job Consolidated Tool** is a web application that manages job data, allowing for the creation, updating, and deletion of job records. It interfaces with a SQL Server database and provides a user-friendly frontend for data visualization and interaction.
-
-### Tech Stack
-- **Backend**:
-  - **Python**: Used for server-side logic and data manipulation.
-  - **pyodbc**: Python library for connecting to the SQL Server database.
-  - **Flask**: A micro web framework used to create RESTful API endpoints for data operations.
-
-- **Database**:
-  - **SQL Server**: A relational database system used for storing and managing job data.
-
-- **Frontend**:
-  - **Angular**: A TypeScript-based web application framework for building the user interface.
-  - **ag-Grid**: A powerful data grid component for displaying and manipulating tabular data within the Angular frontend.
-
-- **Other**:
-  - **APIs**: RESTful APIs for CRUD (Create, Read, Update, Delete) operations on job data.
-
-
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.7.
 

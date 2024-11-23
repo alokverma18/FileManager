@@ -1,15 +1,16 @@
 <div class="file-list-header">
-  <span>
+  <span class="path">
     <a (click)="navigateToPath(-1)" class="clickable">Home > </a>
     <ng-container *ngFor="let part of currentPath.split('\\'); let i = index">
       <a (click)="navigateToPath(i)" class="clickable">{{ part }} > </a>
     </ng-container>
   </span>
 
-  <span>
+  <span class="btns">
     <input type="text" placeholder="Search" class="search" (input)="search($event)" >
     <button class="btn" (click)="pasteItem()" >Paste</button>
     <button #a class="btn" [cdkMenuTriggerFor]="menu">Sort</button>
+    <button class="btn" (click)="changeViewMode()" >View</button>
     <ng-template #menu >
       <div class="menu" cdkMenu (mouseleave)="a.click()">
         <button class="menu-item" cdkMenuItem (click)="sortByName()" >Name</button>
@@ -19,16 +20,51 @@
       </div>
     </ng-template>
   </span>
-
 </div>
 
-<div class="file-grid" (mouseup)="RightClickElement($event)">
-  <div class="file-item" *ngFor="let item of items" (dblclick)="navigateTo(item)"
-    (mouseup)="RightClickElement($event, item)">
-    <mat-icon [class]="item.type" >{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
-    <span>{{ item.name }}</span>
+@if (viewMode === 'grid') {
+  <div class="file-grid" (mouseup)="RightClickElement($event)">
+    <div class="file-item" *ngFor="let item of items" (dblclick)="navigateTo(item)"
+      (mouseup)="RightClickElement($event, item)">
+      <mat-icon [class]="item.type" >{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
+      <span>{{ item.name }}</span>
+    </div>
   </div>
-</div>
+} @else {
+  <div class="list" >
+    <div class="head">
+      <span (click)="sortByName()" >Name</span>
+      <span (click)="sortByDateCreated()" >Date Created</span>
+      <span (click)="sortByDateModified()" >Date Modified</span>
+      <span (click)="sortBySize()" >Size</span>
+    </div>
+    <div class="list-item" *ngFor="let item of items" (dblclick)="navigateTo(item)" (mouseup)="RightClickElement($event, item)">
+      <span>
+        <mat-icon [class]="item.type" >{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
+        {{ item.name }}</span>
+      <span>{{item.date_created}}</span>
+      <span>{{item.date_modified}}</span>
+      <span>{{item.size}}</span>
+    </div>
+  </div>
+}
+
+<!-- <div class="list" >
+  <div class="head">
+    <span>Name</span>
+    <span>Date Created</span>
+    <span>Date Modified</span>
+    <span>Size</span>
+  </div>
+
+  <div class="list-item" *ngFor="let item of items" (dblclick)="navigateTo(item)" (mouseup)="RightClickElement($event, item)">
+  <span>
+    <mat-icon [class]="item.type" >{{ item.type === 'folder' ? 'folder' : 'insert_drive_file' }}</mat-icon>
+    {{ item.name }}</span>
+  <span>{{item.date_created}}</span>
+  <span>{{item.date_modified}}</span>
+  <span>{{item.size}}</span>
+</div> -->
 
 
 <div id="contextmenu" class="contextmenu" [ngStyle]="menuStyle" (clickOutside)="closeMenu()" (mouseleave)="closeMenu()">

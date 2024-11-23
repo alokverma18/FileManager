@@ -28,6 +28,8 @@ export class FileListComponent implements OnInit {
   items: FileElement[] = [];
   allItems: FileElement[] = [];
 
+  viewMode: 'grid' | 'list' = 'grid';
+
   menuStyle: any = {};
 
   selectedFileElement: FileElement | null = null;
@@ -120,14 +122,12 @@ export class FileListComponent implements OnInit {
       let left = event.clientX - 10;
       let top = event.clientY - 10;
 
-
-
       // Adjust position if the menu would go off-screen
       if (left + menuWidth > window.innerWidth) {
-        left = window.innerWidth - menuWidth;
+        left = window.innerWidth - menuWidth - 25;
       }
       if (top + menuHeight > window.innerHeight) {
-        top = window.innerHeight - menuHeight;
+        top = window.innerHeight - menuHeight - 25;
       }
 
       this.menuStyle = {
@@ -258,9 +258,9 @@ export class FileListComponent implements OnInit {
   }
 
 
-  pasteMenuStyle: any = {
-    display: 'none'
-  };
+  // pasteMenuStyle: any = {
+  //   display: 'none'
+  // };
 
 
   // onRightClick(event: MouseEvent): void {
@@ -286,11 +286,11 @@ export class FileListComponent implements OnInit {
   //   }
   // }
 
-  closePasteMenu(): void {
-    this.pasteMenuStyle = {
-      display: 'none'
-    };
-  }
+  // closePasteMenu(): void {
+  //   this.pasteMenuStyle = {
+  //     display: 'none'
+  //   };
+  // }
 
   pasteItem(): void {
     if (this.cutFileElement) {
@@ -331,7 +331,7 @@ export class FileListComponent implements OnInit {
         }
       );
     }
-    this.closePasteMenu();
+    // this.closePasteMenu();
   }
 
 
@@ -349,5 +349,10 @@ export class FileListComponent implements OnInit {
 
   sortByDateModified() {
     this.items.sort((a, b) => new Date(a.date_modified).getTime() - new Date(b.date_modified).getTime());
+  }
+
+
+  changeViewMode() {
+    this.viewMode = this.viewMode === 'grid' ? 'list' : 'grid';
   }
 }

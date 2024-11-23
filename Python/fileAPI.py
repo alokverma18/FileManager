@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
 
 # Base path for the NAS drive
-BASE_PATH = r'C:\Users\Alok\Desktop\\'
+BASE_PATH = r'C:\\'
 
 def parent(path):
     if path==BASE_PATH:

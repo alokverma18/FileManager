@@ -4,6 +4,7 @@
     align-items: center;
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    font-size: larger;
   }
   
   .file-grid {
@@ -17,8 +18,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px; /* Reduced width */
-    height: 80px; /* Reduced height */
+    width: 120px;
+    height: 120px;
     margin: 10px;
     padding: 10px;
     text-align: center;
@@ -38,7 +39,6 @@
   .file-item span {
     margin-top: 8px;
     color: #333;
-    font-size: 12px; /* Reduced font size */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -116,11 +116,11 @@
     padding: 8px 16px;
     align-items: center;
     border-radius: 4px;
-    width: 75px;
     box-shadow: 0 0.5px 2px rgba(0, 0, 0);
   }
   .btn:hover {
-    background-color: rgb(208, 208, 208);
+    background-color: rgb(13, 22, 205);
+    color: white;
     transition: background-color 0.3s;
   }
 
@@ -151,4 +151,42 @@
   }
   .file {
     color: rgb(3, 55, 245);
+  }
+
+
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 40px 20px 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+  }
+  .head {
+    font-weight: 700;
+  }
+
+  .list-item, .head {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .list span {
+    margin-top: 8px;
+    color: #333;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    user-select: none;
+
+    mat-icon {
+      margin: -5px 5px;
+    }
   }
