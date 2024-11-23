@@ -6,7 +6,7 @@ import shutil
 import tempfile
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:4200"}})
+CORS(app)
 
 # Base path for the NAS drive
 BASE_PATH = r'C:\\'
