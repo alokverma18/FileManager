@@ -3,34 +3,96 @@
     transition: width 0.3s;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 1px solid #ccc;
+    border-right: 1px solid var(--border-dark);
+    background-color: var(--bg-secondary);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  
+
   .sidebar.collapsed {
-    width: 0px; 
+    width: 0;
   }
-  
+
   .toggle-icon {
     cursor: pointer;
-    height: 42px;
+    min-height: 64px;
+    height: 64px;
     padding: 10px;
     align-items: center;
     display: flex;
-    border-bottom: 1px solid #ccc;
-    transition: transform 0.3s;
+    border-bottom: 1px solid var(--border-dark);
+    transition: all 0.3s ease;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    flex-shrink: 0;
+  }
+
+  .toggle-icon:hover {
+    background-color: var(--bg-hover);
   }
 
   mat-nav-list {
-    padding: 0px;
+    padding: 0;
+    flex: 1;
+    overflow-y: auto;
   }
 
   mat-nav-list .mat-icon {
     margin: -5px 8px;
-    color: rgb(255, 196, 1);
+    color: var(--folder-icon);
+    transition: color 0.3s ease;
   }
 
-  mat-list-item:hover {
-    .mat-icon {
-      color: rgb(255, 115, 1);
-    }
+  ::ng-deep mat-list-item {
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease !important;
+    background-color: transparent !important;
+  }
+
+  ::ng-deep mat-list-item span {
+    color: var(--text-primary) !important;
+  }
+
+  ::ng-deep mat-list-item:hover {
+    background-color: var(--bg-hover) !important;
+  }
+
+  ::ng-deep mat-list-item:hover .mat-icon {
+    color: var(--primary-color) !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item:hover {
+    background-color: var(--bg-hover) !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item-content {
+    background-color: transparent !important;
+    transition: background-color 0.3s ease !important;
+  }
+
+  ::ng-deep mat-list-item:hover .mat-mdc-list-item-content {
+    background-color: var(--bg-hover) !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item .mat-ripple {
+    display: none !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item::before,
+  ::ng-deep .mat-mdc-list-item::after {
+    display: none !important;
+  }
+
+  ::ng-deep .mdc-list-item__ripple {
+    display: none !important;
+  }
+
+  ::ng-deep .mat-mdc-list-item-unscoped-content {
+    background-color: transparent !important;
   }

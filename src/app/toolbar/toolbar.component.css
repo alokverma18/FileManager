@@ -1,16 +1,32 @@
+:host {
+  display: contents;
+}
+
 .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    background-color: #3f51b5;
-    color: white;
+    background-color: var(--primary-color);
+    color: var(--text-inverse);
+    border-bottom: 1px solid var(--border-light);
+}
+
+:host-context([data-theme="dark"]) .toolbar {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary);
 }
 
 .toolbar-title {
-    font-size: 30px;
-    font-weight: bold;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     user-select: none;
+    color: var(--text-inverse);
+}
+
+:host-context([data-theme="dark"]) .toolbar-title {
+    color: var(--primary-color);
 }
 
 .toolbar-spacer {
@@ -18,17 +34,39 @@
 }
 
 button {
-    color: white;
+    color: var(--text-inverse);
     border: none;
     background: transparent;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: 500;
     padding: 8px 16px;
     border-radius: 4px;
+    transition: all 0.3s;
+}
+
+:host-context([data-theme="dark"]) button {
+    color: var(--text-primary);
 }
 
 button:hover {
-    background-color: white;
-    transition: background-color 0.3s;
-    color: blue;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: var(--text-inverse);
     cursor: pointer;
+}
+
+:host-context([data-theme="dark"]) button:hover {
+    background-color: var(--bg-hover);
+    color: var(--primary-color);
+}
+
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle mat-icon {
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
 }

@@ -7,5 +7,7 @@
     <button mat-button (click)="createFolder()">New folder</button>
     <input type="file" (change)="onFileSelected($event)" style="display: none" #fileInput>
     <button mat-button (click)="fileInput.click()">Upload</button>
+    <button mat-button (click)="toggleTheme()" class="theme-toggle">
+        <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
 </mat-toolbar>
-  

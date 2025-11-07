@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { Component } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { FileManagerService } from '../services/file.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -7,19 +9,20 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-toolbar',
   standalone: true,
-  imports: [MatToolbarModule, HttpClientModule],
+  imports: [MatIconModule, MatToolbarModule, MatButtonModule, HttpClientModule],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.css',
 })
 export class ToolbarComponent {
 
   constructor(
-              private http: HttpClient, 
+              private http: HttpClient,
               private fileManagerService: FileManagerService,
               private snackBar: MatSnackBar
             ) {}
 
   currentPath!: string;
+  isDarkTheme: boolean = false;
 
   ngOnInit() {
     this.fileManagerService.currentPath$.subscribe(path => {
@@ -27,6 +30,24 @@ export class ToolbarComponent {
         this.currentPath = path;
       }
     });
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      this.isDarkTheme = true;
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  }
+
+  toggleTheme() {
+    this.isDarkTheme = !this.isDarkTheme;
+    if (this.isDarkTheme) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+    }
   }
 
   file: File | null = null;
@@ -39,7 +60,7 @@ export class ToolbarComponent {
     this.fileManagerService.setPath(pathParts.join('\\'));
 
   }
-  
+
   createFolder() {
     const folder = prompt('Enter folder name');
     if (!folder) {
@@ -67,25 +88,24 @@ export class ToolbarComponent {
       console.log(this.file);
       if (this.file) {
         this.fileManagerService.uploadFile(this.file, this.currentPath).subscribe(
-          data => 
+          data =>
             {
               this.refresh()
               console.log(data)
             },
-          error => 
+          error =>
             {
               console.log(error);
               alert('Error uploading file');
             }
-            
+
         );
       }
     }
   }
 
-
-
   refresh() {
 
   }
 }
+

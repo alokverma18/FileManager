@@ -2,11 +2,19 @@
   display: flex;
   min-width: 600px; /* Set a minimum width */
   flex-grow: 1; /* Ensure it takes up available space */
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease;
+  height: calc(100vh - 64px);
 }
 
+app-sidebar {
+  display: flex;
+  flex-direction: column;
+}
 
 app-file-list {
   flex: 1; /* Take up remaining space */
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }

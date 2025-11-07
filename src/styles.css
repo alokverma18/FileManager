@@ -1,4 +1,249 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-* { margin: 0; font-family: 'Publico'}
+:root {
+  /* Light Theme Colors */
+  --primary-color: #ff6400;
+  --primary-hover: #e55a00;
+  --primary-light: #ff8533;
+
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #fafafa;
+  --bg-hover: #f0f0f0;
+
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-inverse: #ffffff;
+
+  --border-color: #e1e4e8;
+  --border-light: #ddd;
+  --border-dark: #ccc;
+
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-medium: rgba(0, 0, 0, 0.2);
+
+  --folder-icon: #ffb347;
+  --file-icon: #4a90e2;
+
+  --link-color: #ff6400;
+  --link-hover: #e55a00;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Colors - All dark shades */
+  --primary-color: #ff6400;
+  --primary-hover: #ff8533;
+  --primary-light: #ff7a1a;
+
+  --bg-primary: #0d0d0d;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #141414;
+  --bg-hover: #2a2a2a;
+
+  --text-primary: #ffffff;
+  --text-secondary: #b0b0b0;
+  --text-inverse: #ffffff;
+
+  --border-color: #2a2a2a;
+  --border-light: #333333;
+  --border-dark: #1f1f1f;
+
+  --shadow-light: rgba(0, 0, 0, 0.5);
+  --shadow-medium: rgba(0, 0, 0, 0.7);
+
+  --folder-icon: #ff6400;
+  --file-icon: #64b5f6;
+
+  --link-color: #ff6400;
+  --link-hover: #ff8533;
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* Global Button Styles */
+button {
+  font-family: inherit;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Global Input Styles */
+input, textarea, select {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 100, 0, 0.2);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-dark) var(--bg-secondary);
+}
+
+/* Global Link Styles */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: inherit;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Material Design Component Overrides */
+.mat-mdc-button, .mat-mdc-raised-button, .mat-mdc-fab, .mat-mdc-mini-fab {
+  transition: all 0.3s ease !important;
+  font-family: inherit !important;
+}
+
+.mat-toolbar {
+  transition: background-color 0.3s ease !important;
+  font-family: inherit !important;
+}
+
+.mat-list-item {
+  transition: background-color 0.3s ease !important;
+  font-family: inherit !important;
+  color: var(--text-primary) !important;
+}
+
+.mat-list-item .mdc-list-item__primary-text {
+  color: var(--text-primary) !important;
+}
+
+.mat-icon {
+  transition: color 0.3s ease !important;
+}
+
+/* Selection Styles */
+::selection {
+  background-color: var(--primary-color);
+  color: var(--text-inverse);
+}
+
+::-moz-selection {
+  background-color: var(--primary-color);
+  color: var(--text-inverse);
+}
+
+/* Loading/Spinner placeholder if needed */
+.spinner {
+  border: 3px solid var(--border-light);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Card-like containers */
+.card {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 2px 4px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transform: translateY(-2px);
+}
+
+/* Utility Classes */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+/* Smooth transitions for theme changes */
+*, *::before, *::after {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+button, a, input, textarea, select, .file-item, .list-item, .card {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
