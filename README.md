@@ -27,6 +27,8 @@ An application that allows users to navigate, view, and manage local files and d
 ## Snap
   ![](snapshot.png)
 
+## Practicality
+This project is mainly for learning purposes, showcasing full-stack development with Angular and Python. It has limited real-world applications as a file manager, as native OS explorers are more efficient for local use. However, it can be a starting point for web-based file tools in specific scenarios like remote access or integration into larger apps.
 
 ## Contributions 🤝
 
